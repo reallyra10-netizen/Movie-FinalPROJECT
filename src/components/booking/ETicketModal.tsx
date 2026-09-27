@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { BookingTicket } from "@/types/booking";
 
 interface ETicketModalProps {
@@ -185,35 +186,13 @@ export default function ETicketModal({
 
             <div className="flex flex-col items-center">
               <div className="p-2 bg-white rounded-xl shadow-md">
-                <svg
-                  className="w-24 h-24 text-slate-950"
-                  viewBox="0 0 100 100"
-                  fill="currentColor"
-                >
-                  <rect x="0" y="0" width="30" height="30" rx="4" />
-                  <rect x="5" y="5" width="20" height="20" fill="white" />
-                  <rect x="9" y="9" width="12" height="12" fill="#020617" />
-
-                  <rect x="70" y="0" width="30" height="30" rx="4" />
-                  <rect x="75" y="5" width="20" height="20" fill="white" />
-                  <rect x="79" y="9" width="12" height="12" fill="#020617" />
-
-                  <rect x="0" y="70" width="30" height="30" rx="4" />
-                  <rect x="5" y="75" width="20" height="20" fill="white" />
-                  <rect x="9" y="79" width="12" height="12" fill="#020617" />
-
-                  <rect x="40" y="10" width="10" height="10" />
-                  <rect x="55" y="15" width="8" height="8" />
-                  <rect x="42" y="25" width="14" height="6" />
-                  <rect x="15" y="42" width="12" height="8" />
-                  <rect x="35" y="40" width="25" height="25" rx="3" />
-                  <rect x="42" y="47" width="11" height="11" fill="white" />
-                  <rect x="70" y="45" width="12" height="8" />
-                  <rect x="85" y="40" width="10" height="15" />
-                  <rect x="40" y="75" width="10" height="15" />
-                  <rect x="55" y="70" width="15" height="10" />
-                  <rect x="75" y="75" width="20" height="18" />
-                </svg>
+                <Image
+                  src="/khqr-code.png"
+                  alt="Admission QR Code"
+                  width={96}
+                  height={96}
+                  className="w-24 h-24 object-contain"
+                />
               </div>
               <span className="text-[10px] font-mono text-slate-500 mt-1">Scan at Hall Gate</span>
             </div>

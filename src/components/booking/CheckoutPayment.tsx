@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import { PaymentMethod, Seat, SnackItem } from "@/types/booking";
 
 interface CheckoutPaymentProps {
@@ -340,48 +341,18 @@ export default function CheckoutPayment({
                     </p>
                   </div>
 
-                  <div className="relative">
-                    <svg
-                      className="w-44 h-44 text-slate-950"
-                      viewBox="0 0 100 100"
-                      fill="currentColor"
-                    >
-                      <rect x="0" y="0" width="30" height="30" rx="4" />
-                      <rect x="5" y="5" width="20" height="20" fill="white" />
-                      <rect x="9" y="9" width="12" height="12" fill="#e11d48" />
+                  <div className="relative w-48 h-48 flex items-center justify-center p-1 bg-white rounded-lg">
+                    {/* Image qr code */}
+                    <Image
+                      src="/khqr-code.png"
+                      alt="Bakong KHQR Payment"
+                      width={192}
+                      height={192}
+                      className="w-full h-full object-contain"
+                      priority
+                    />
 
-                      <rect x="70" y="0" width="30" height="30" rx="4" />
-                      <rect x="75" y="5" width="20" height="20" fill="white" />
-                      <rect x="79" y="9" width="12" height="12" fill="#e11d48" />
-
-                      <rect x="0" y="70" width="30" height="30" rx="4" />
-                      <rect x="5" y="75" width="20" height="20" fill="white" />
-                      <rect x="9" y="79" width="12" height="12" fill="#e11d48" />
-
-                      <rect x="40" y="8" width="8" height="8" />
-                      <rect x="52" y="14" width="10" height="6" />
-                      <rect x="42" y="24" width="14" height="6" />
-                      <rect x="12" y="40" width="10" height="10" />
-                      <rect x="72" y="40" width="12" height="6" />
-
-                      <rect x="36" y="36" width="28" height="28" rx="4" fill="#020617" />
-                      <text
-                        x="50"
-                        y="53"
-                        fill="white"
-                        fontSize="9"
-                        fontWeight="bold"
-                        textAnchor="middle"
-                      >
-                        $
-                      </text>
-
-                      <rect x="40" y="72" width="12" height="8" />
-                      <rect x="56" y="70" width="8" height="16" />
-                      <rect x="70" y="70" width="22" height="22" />
-                    </svg>
-
-                    <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-lg opacity-40">
+                    <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-lg opacity-30">
                       <div className="w-full h-1 bg-gradient-to-r from-transparent via-rose-500 to-transparent animate-pulse" />
                     </div>
                   </div>

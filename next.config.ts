@@ -5,12 +5,12 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "fakestoreapi.com",
+        hostname: "image.tmdb.org",
         pathname: "/**",
       },
       {
         protocol: "https",
-        hostname: "image.tmdb.org",
+        hostname: "images.unsplash.com",
         pathname: "/**",
       },
     ],

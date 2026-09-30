@@ -1,0 +1,1027 @@
+{
+  "info": {
+    "_postman_id": "7e54289a-5d53-4e72-ac2b-1dee8974b97e",
+    "name": "TMDB - Movies",
+    "description": "Endpoints for the Movies resource of the TMDB API v3.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "56821471"
+  },
+  "item": [
+    {
+      "name": "Movie Lists",
+      "item": [
+        {
+          "name": "Now Playing",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1&api_key={{tmdb_api_key}}",
+              "protocol": "https",
+              "host": [
+                "api",
+                "themoviedb",
+                "org"
+              ],
+              "path": [
+                "3",
+                "movie",
+                "now_playing"
+              ],
+              "query": [
+                {
+                  "key": "language",
+                  "value": "en-US"
+                },
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "api_key",
+                  "value": "{{tmdb_api_key}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Popular",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1&api_key={{tmdb_api_key}}",
+              "protocol": "https",
+              "host": [
+                "api",
+                "themoviedb",
+                "org"
+              ],
+              "path": [
+                "3",
+                "movie",
+                "popular"
+              ],
+              "query": [
+                {
+                  "key": "language",
+                  "value": "en-US"
+                },
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "api_key",
+                  "value": "{{tmdb_api_key}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Top Rated",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1&api_key={{tmdb_api_key}}",
+              "protocol": "https",
+              "host": [
+                "api",
+                "themoviedb",
+                "org"
+              ],
+              "path": [
+                "3",
+                "movie",
+                "top_rated"
+              ],
+              "query": [
+                {
+                  "key": "language",
+                  "value": "en-US"
+                },
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "api_key",
+                  "value": "{{tmdb_api_key}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Upcoming",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1&api_key={{tmdb_api_key}}",
+              "protocol": "https",
+              "host": [
+                "api",
+                "themoviedb",
+                "org"
+              ],
+              "path": [
+                "3",
+                "movie",
+                "upcoming"
+              ],
+              "query": [
+                {
+                  "key": "language",
+                  "value": "en-US"
+                },
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "api_key",
+                  "value": "{{tmdb_api_key}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Trending",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.themoviedb.org/3/trending/movie/{{time_window}}?language=en-US&api_key={{tmdb_api_key}}",
+              "protocol": "https",
+              "host": [
+                "api",
+                "themoviedb",
+                "org"
+              ],
+              "path": [
+                "3",
+                "trending",
+                "movie",
+                "{{time_window}}"
+              ],
+              "query": [
+                {
+                  "key": "language",
+                  "value": "en-US"
+                },
+                {
+                  "key": "api_key",
+                  "value": "{{tmdb_api_key}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Movie Details",
+      "item": [
+        {
+          "name": "Details",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.themoviedb.org/3/movie/{{movie_id}}?language=en-US&api_key={{tmdb_api_key}}",
+              "protocol": "https",
+              "host": [
+                "api",
+                "themoviedb",
+                "org"
+              ],
+              "path": [
+                "3",
+                "movie",
+                "{{movie_id}}"
+              ],
+              "query": [
+                {
+                  "key": "language",
+                  "value": "en-US"
+                },
+                {
+                  "key": "api_key",
+                  "value": "{{tmdb_api_key}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Account States",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.themoviedb.org/3/movie/{{movie_id}}/account_states?api_key={{tmdb_api_key}}",
+              "protocol": "https",
+              "host": [
+                "api",
+                "themoviedb",
+                "org"
+              ],
+              "path": [
+                "3",
+                "movie",
+                "{{movie_id}}",
+                "account_states"
+              ],
+              "query": [
+                {
+                  "key": "api_key",
+                  "value": "{{tmdb_api_key}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Alternative Titles",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.themoviedb.org/3/movie/{{movie_id}}/alternative_titles?api_key={{tmdb_api_key}}",
+              "protocol": "https",
+              "host": [
+                "api",
+                "themoviedb",
+                "org"
+              ],
+              "path": [
+                "3",
+                "movie",
+                "{{movie_id}}",
+                "alternative_titles"
+              ],
+              "query": [
+                {
+                  "key": "api_key",
+                  "value": "{{tmdb_api_key}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Changes",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.themoviedb.org/3/movie/{{movie_id}}/changes?api_key={{tmdb_api_key}}",
+              "protocol": "https",
+              "host": [
+                "api",
+                "themoviedb",
+                "org"
+              ],
+              "path": [
+                "3",
+                "movie",
+                "{{movie_id}}",
+                "changes"
+              ],
+              "query": [
+                {
+                  "key": "api_key",
+                  "value": "{{tmdb_api_key}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Credits",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.themoviedb.org/3/movie/{{movie_id}}/credits?language=en-US&api_key={{tmdb_api_key}}",
+              "protocol": "https",
+              "host": [
+                "api",
+                "themoviedb",
+                "org"
+              ],
+              "path": [
+                "3",
+                "movie",
+                "{{movie_id}}",
+                "credits"
+              ],
+              "query": [
+                {
+                  "key": "language",
+                  "value": "en-US"
+                },
+                {
+                  "key": "api_key",
+                  "value": "{{tmdb_api_key}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "External IDs",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.themoviedb.org/3/movie/{{movie_id}}/external_ids?api_key={{tmdb_api_key}}",
+              "protocol": "https",
+              "host": [
+                "api",
+                "themoviedb",
+                "org"
+              ],
+              "path": [
+                "3",
+                "movie",
+                "{{movie_id}}",
+                "external_ids"
+              ],
+              "query": [
+                {
+                  "key": "api_key",
+                  "value": "{{tmdb_api_key}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Images",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.themoviedb.org/3/movie/{{movie_id}}/images?api_key={{tmdb_api_key}}",
+              "protocol": "https",
+              "host": [
+                "api",
+                "themoviedb",
+                "org"
+              ],
+              "path": [
+                "3",
+                "movie",
+                "{{movie_id}}",
+                "images"
+              ],
+              "query": [
+                {
+                  "key": "api_key",
+                  "value": "{{tmdb_api_key}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Keywords",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.themoviedb.org/3/movie/{{movie_id}}/keywords?api_key={{tmdb_api_key}}",
+              "protocol": "https",
+              "host": [
+                "api",
+                "themoviedb",
+                "org"
+              ],
+              "path": [
+                "3",
+                "movie",
+                "{{movie_id}}",
+                "keywords"
+              ],
+              "query": [
+                {
+                  "key": "api_key",
+                  "value": "{{tmdb_api_key}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Lists",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.themoviedb.org/3/movie/{{movie_id}}/lists?language=en-US&page=1&api_key={{tmdb_api_key}}",
+              "protocol": "https",
+              "host": [
+                "api",
+                "themoviedb",
+                "org"
+              ],
+              "path": [
+                "3",
+                "movie",
+                "{{movie_id}}",
+                "lists"
+              ],
+              "query": [
+                {
+                  "key": "language",
+                  "value": "en-US"
+                },
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "api_key",
+                  "value": "{{tmdb_api_key}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Recommendations",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.themoviedb.org/3/movie/{{movie_id}}/recommendations?language=en-US&page=1&api_key={{tmdb_api_key}}",
+              "protocol": "https",
+              "host": [
+                "api",
+                "themoviedb",
+                "org"
+              ],
+              "path": [
+                "3",
+                "movie",
+                "{{movie_id}}",
+                "recommendations"
+              ],
+              "query": [
+                {
+                  "key": "language",
+                  "value": "en-US"
+                },
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "api_key",
+                  "value": "{{tmdb_api_key}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Release Dates",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.themoviedb.org/3/movie/{{movie_id}}/release_dates?api_key={{tmdb_api_key}}",
+              "protocol": "https",
+              "host": [
+                "api",
+                "themoviedb",
+                "org"
+              ],
+              "path": [
+                "3",
+                "movie",
+                "{{movie_id}}",
+                "release_dates"
+              ],
+              "query": [
+                {
+                  "key": "api_key",
+                  "value": "{{tmdb_api_key}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Reviews",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.themoviedb.org/3/movie/{{movie_id}}/reviews?language=en-US&page=1&api_key={{tmdb_api_key}}",
+              "protocol": "https",
+              "host": [
+                "api",
+                "themoviedb",
+                "org"
+              ],
+              "path": [
+                "3",
+                "movie",
+                "{{movie_id}}",
+                "reviews"
+              ],
+              "query": [
+                {
+                  "key": "language",
+                  "value": "en-US"
+                },
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "api_key",
+                  "value": "{{tmdb_api_key}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Similar",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.themoviedb.org/3/movie/{{movie_id}}/similar?language=en-US&page=1&api_key={{tmdb_api_key}}",
+              "protocol": "https",
+              "host": [
+                "api",
+                "themoviedb",
+                "org"
+              ],
+              "path": [
+                "3",
+                "movie",
+                "{{movie_id}}",
+                "similar"
+              ],
+              "query": [
+                {
+                  "key": "language",
+                  "value": "en-US"
+                },
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "api_key",
+                  "value": "{{tmdb_api_key}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Translations",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.themoviedb.org/3/movie/{{movie_id}}/translations?api_key={{tmdb_api_key}}",
+              "protocol": "https",
+              "host": [
+                "api",
+                "themoviedb",
+                "org"
+              ],
+              "path": [
+                "3",
+                "movie",
+                "{{movie_id}}",
+                "translations"
+              ],
+              "query": [
+                {
+                  "key": "api_key",
+                  "value": "{{tmdb_api_key}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Videos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.themoviedb.org/3/movie/{{movie_id}}/videos?language=en-US&api_key={{tmdb_api_key}}",
+              "protocol": "https",
+              "host": [
+                "api",
+                "themoviedb",
+                "org"
+              ],
+              "path": [
+                "3",
+                "movie",
+                "{{movie_id}}",
+                "videos"
+              ],
+              "query": [
+                {
+                  "key": "language",
+                  "value": "en-US"
+                },
+                {
+                  "key": "api_key",
+                  "value": "{{tmdb_api_key}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Watch Providers",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.themoviedb.org/3/movie/{{movie_id}}/watch/providers?api_key={{tmdb_api_key}}",
+              "protocol": "https",
+              "host": [
+                "api",
+                "themoviedb",
+                "org"
+              ],
+              "path": [
+                "3",
+                "movie",
+                "{{movie_id}}",
+                "watch",
+                "providers"
+              ],
+              "query": [
+                {
+                  "key": "api_key",
+                  "value": "{{tmdb_api_key}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Rating",
+      "item": [
+        {
+          "name": "Add Rating",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"value\": 8.5\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.themoviedb.org/3/movie/{{movie_id}}/rating?guest_session_id={{guest_session_id}}&api_key={{tmdb_api_key}}",
+              "protocol": "https",
+              "host": [
+                "api",
+                "themoviedb",
+                "org"
+              ],
+              "path": [
+                "3",
+                "movie",
+                "{{movie_id}}",
+                "rating"
+              ],
+              "query": [
+                {
+                  "key": "guest_session_id",
+                  "value": "{{guest_session_id}}"
+                },
+                {
+                  "key": "api_key",
+                  "value": "{{tmdb_api_key}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Rating",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "https://api.themoviedb.org/3/movie/{{movie_id}}/rating?guest_session_id={{guest_session_id}}&api_key={{tmdb_api_key}}",
+              "protocol": "https",
+              "host": [
+                "api",
+                "themoviedb",
+                "org"
+              ],
+              "path": [
+                "3",
+                "movie",
+                "{{movie_id}}",
+                "rating"
+              ],
+              "query": [
+                {
+                  "key": "guest_session_id",
+                  "value": "{{guest_session_id}}"
+                },
+                {
+                  "key": "api_key",
+                  "value": "{{tmdb_api_key}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Search & Discover",
+      "item": [
+        {
+          "name": "Search Movies",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.themoviedb.org/3/search/movie?query=Inception&language=en-US&page=1&include_adult=false&api_key={{tmdb_api_key}}",
+              "protocol": "https",
+              "host": [
+                "api",
+                "themoviedb",
+                "org"
+              ],
+              "path": [
+                "3",
+                "search",
+                "movie"
+              ],
+              "query": [
+                {
+                  "key": "query",
+                  "value": "Inception"
+                },
+                {
+                  "key": "language",
+                  "value": "en-US"
+                },
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "include_adult",
+                  "value": "false"
+                },
+                {
+                  "key": "api_key",
+                  "value": "{{tmdb_api_key}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Discover Movies",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.themoviedb.org/3/discover/movie?language=en-US&sort_by=popularity.desc&page=1&api_key={{tmdb_api_key}}",
+              "protocol": "https",
+              "host": [
+                "api",
+                "themoviedb",
+                "org"
+              ],
+              "path": [
+                "3",
+                "discover",
+                "movie"
+              ],
+              "query": [
+                {
+                  "key": "language",
+                  "value": "en-US"
+                },
+                {
+                  "key": "sort_by",
+                  "value": "popularity.desc"
+                },
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "api_key",
+                  "value": "{{tmdb_api_key}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Genres",
+      "item": [
+        {
+          "name": "Genre List",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.themoviedb.org/3/genre/movie/list?language=en-US&api_key={{tmdb_api_key}}",
+              "protocol": "https",
+              "host": [
+                "api",
+                "themoviedb",
+                "org"
+              ],
+              "path": [
+                "3",
+                "genre",
+                "movie",
+                "list"
+              ],
+              "query": [
+                {
+                  "key": "language",
+                  "value": "en-US"
+                },
+                {
+                  "key": "api_key",
+                  "value": "{{tmdb_api_key}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Certifications",
+      "item": [
+        {
+          "name": "Certification List",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.themoviedb.org/3/certification/movie/list?api_key={{tmdb_api_key}}",
+              "protocol": "https",
+              "host": [
+                "api",
+                "themoviedb",
+                "org"
+              ],
+              "path": [
+                "3",
+                "certification",
+                "movie",
+                "list"
+              ],
+              "query": [
+                {
+                  "key": "api_key",
+                  "value": "{{tmdb_api_key}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Bulk Changes",
+      "item": [
+        {
+          "name": "Changes (bulk)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.themoviedb.org/3/movie/changes?page=1&api_key={{tmdb_api_key}}",
+              "protocol": "https",
+              "host": [
+                "api",
+                "themoviedb",
+                "org"
+              ],
+              "path": [
+                "3",
+                "movie",
+                "changes"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "api_key",
+                  "value": "{{tmdb_api_key}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api_key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{tmdb_api_key}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "tmdb_api_key",
+      "value": "0e42297fbdb49b4a24879c7d54325351"
+    },
+    {
+      "key": "movie_id",
+      "value": "550"
+    },
+    {
+      "key": "time_window",
+      "value": "day"
+    },
+    {
+      "key": "guest_session_id",
+      "value": ""
+    }
+  ]
+}

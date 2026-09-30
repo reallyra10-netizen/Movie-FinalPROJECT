@@ -1,8 +1,9 @@
+//layout
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import FooterComponents from "@/components/layout/FooterComponents";
 import NavbarComponents from "@/components/layout/NavbarComponents";
+import FooterComponents from "@/components/layout/FooterComponents";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,35 +15,37 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// static metadata & open
-// static metadata & opengraph
+//metadata
 export const metadata: Metadata = {
+  metadataBase: new URL("https://istadmovies.vercel.app"),
   title: {
-    template:'%s | RULES OF SURVIVAL',
-    default: 'RULES OF SURVIVAL'
+    template: "%s | ISTADMOVIES",
+    default: "ISTADMOVIES - Watch Movies",
   },
-  description: "LEGOBiz is the platform which review about the e-commerce products which supported with the store of clothes, trouser, for Cambodia.",
-  keywords:"Clothes for women, Clothes for men, Clothes for kid, E-commerce, discount, popular T-Shirt, online shop.",
-  openGraph:{
-    title: {
-    template:'%s | FAMILY',
-    default: 'FAMILY'
+  description: "Browse popular movies, top rated films, and now playing cinema titles with TMDB data, storyline overviews, trailers, and cast information.",
+  keywords: ["movies", "cinema", "tmdb", "trending movies", "top rated", "trailers", "netflix style", "istadmovies"],
+  openGraph: {
+    title: "ISTADMOVIES - Watch Movies Online",
+    description: "Discover the best trending movies, top rated films, and trailers online.",
+    siteName: "ISTADMOVIES",
+    type: "website",
   },
-    description: "Quality Over Quantity: Every garment undergoes rigorous wear-testing to ensure it holds its shape, color, and hand-feel wash after wash.",
-    images:['/Thumbernail.jpg']
-  }
 };
 
-
-export default function RootLayout({ children }: LayoutProps<"/">) {
+//root layout
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">{children}
-        <NavbarComponents/>
-        <FooterComponents/>
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased dark`}>
+      <body className="min-h-screen flex flex-col bg-[#141414] text-white">
+        <NavbarComponents />
+        <main className="flex-1">
+          {children}
+        </main>
+        <FooterComponents />
       </body>
     </html>
   );

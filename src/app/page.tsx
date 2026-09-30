@@ -1,21 +1,46 @@
+//home page
 import { Metadata } from "next";
+import MovieHeroHeader from "@/components/movies/MovieHeroHeader";
 import MovieListComponent from "@/components/movies/MovieListComponent";
 
+//seo metadata
 export const metadata: Metadata = {
-  title: "Watch.ME - Browse Popular Movies & Book Seats",
-  description: "Discover the latest trending movies, view storyline details, trailer summaries, and reserve your cinema hall seats online.",
-  keywords: "movies, cinema, ticket booking, tmdb, trending films, movie seats",
+  title: "Home",
+  description: "Explore the latest popular movies, trending cinema hits, storyline summaries, and ratings powered by TMDB.",
+  keywords: ["movies", "cinema", "tmdb", "trending films", "top rated", "netflix style"],
   openGraph: {
-    title: "Watch.ME - Browse Popular Movies & Book Seats",
-    description: "Discover the latest trending movies and reserve your cinema hall seats online.",
+    title: "Home | ISTADMOVIES",
+    description: "Explore the latest popular movies, trending cinema hits, and ratings.",
     images: ["/Thumbernail.jpg"],
   },
 };
 
-export default function Home() {
+//fetch hero movie from api
+async function getHeroMovie() {
+  try {
+    const res = await fetch(
+      "https://api.themoviedb.org/3/movie/popular?api_key=0e42297fbdb49b4a24879c7d54325351",
+      { next: { revalidate: 3600 } }
+    );
+    if (!res.ok) return null;
+    const data = await res.json();
+    return data.results && data.results.length > 0 ? data.results[0] : null;
+  } catch (error) {
+    console.error("Hero movie error:", error);
+    return null;
+  }
+}
+
+export default async function Home() {
+  const heroMovie = await getHeroMovie();
+
   return (
-    <main className="min-h-screen bg-slate-950 text-slate-100 py-8">
-      <MovieListComponent />
-    </main>
+    <div className="bg-[#141414] text-white min-h-screen">
+      {/* hero header */}
+      <MovieHeroHeader movie={heroMovie} />
+
+      {/* movie catalog */}
+      <MovieListComponent initialCategory="popular" />
+    </div>
   );
 }

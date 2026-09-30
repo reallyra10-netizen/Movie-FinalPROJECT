@@ -1,22 +1,52 @@
+//movies catalog page
 import { Metadata } from "next";
 import MovieListComponent from "@/components/movies/MovieListComponent";
 
-export const metadata: Metadata = {
-  title: "Movies - Watch.ME",
-  description: "Browse popular movies, explore ratings, descriptions, and details from TMDB.",
-  keywords: "movies, cinema, tmdb, popular movies, film, stream",
-  openGraph: {
-    title: "Movies - Watch.ME",
-    description: "Browse popular movies, explore ratings, descriptions, and details from TMDB.",
-    images: ["/Thumbernail.jpg"],
-  },
+type PageProps = {
+  searchParams: Promise<{
+    category?: 'popular' | 'now_playing' | 'top_rated' | 'upcoming';
+    search?: string;
+  }>;
 };
 
-export default function MoviePage() {
+//dynamic seo metadata matching navbar page name
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const params = await props.searchParams;
+
+  let pageName = "All Movies";
+  if (params.search) {
+    pageName = `Search: ${params.search}`;
+  } else if (params.category === "popular") {
+    pageName = "Popular";
+  } else if (params.category === "top_rated") {
+    pageName = "Top Rated";
+  } else if (params.category === "upcoming") {
+    pageName = "Upcoming";
+  } else if (params.category === "now_playing") {
+    pageName = "Now Playing";
+  }
+
+  return {
+    title: pageName,
+    description: `Explore ${pageName} on ISTADMOVIES powered by TMDB live data.`,
+    keywords: ["movies", pageName.toLowerCase(), "tmdb", "streaming", "istadmovies"],
+    openGraph: {
+      title: `${pageName} | ISTADMOVIES`,
+      description: `Explore ${pageName} on ISTADMOVIES powered by TMDB live data.`,
+      images: ["/Thumbernail.jpg"],
+    },
+  };
+}
+
+export default async function MoviePage(props: PageProps) {
+  const params = await props.searchParams;
+
   return (
-    <section className="min-h-screen bg-gray-50 py-6">
-      {/* Display all movie cards */}
-      <MovieListComponent />
-    </section>
+    <div className="min-h-screen bg-[#141414] text-white py-6">
+      <MovieListComponent
+        initialCategory={params.category || 'popular'}
+        searchQuery={params.search || ''}
+      />
+    </div>
   );
 }

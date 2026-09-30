@@ -1,4 +1,4 @@
-// TMDB Movie API Interfaces matching TMDB v3 API collection
+//movie types
 
 export interface Movie {
   id: number;
@@ -21,10 +21,6 @@ export interface TMDBResponse<T = Movie> {
   results: T[];
   total_pages: number;
   total_results: number;
-  dates?: {
-    maximum: string;
-    minimum: string;
-  };
 }
 
 export interface Genre {
@@ -34,9 +30,9 @@ export interface Genre {
 
 export interface ProductionCompany {
   id: number;
-  logo_path: string | null;
   name: string;
-  origin_country: string;
+  logo_path: string | null;
+  origin_country?: string;
 }
 
 export interface MovieDetail extends Movie {
@@ -46,9 +42,8 @@ export interface MovieDetail extends Movie {
   status: string;
   tagline: string;
   genres: Genre[];
-  homepage: string | null;
-  imdb_id: string | null;
-  production_companies: ProductionCompany[];
+  original_language?: string;
+  production_companies?: ProductionCompany[];
 }
 
 export interface CastMember {
@@ -56,7 +51,6 @@ export interface CastMember {
   name: string;
   character: string;
   profile_path: string | null;
-  order: number;
 }
 
 export interface CrewMember {
@@ -78,10 +72,7 @@ export interface MovieVideo {
   key: string;
   name: string;
   site: string;
-  size: number;
   type: string;
-  official: boolean;
-  published_at: string;
 }
 
 export interface MovieVideosResponse {

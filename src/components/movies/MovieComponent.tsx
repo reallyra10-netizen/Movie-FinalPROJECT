@@ -1,58 +1,108 @@
-import Image from "next/image";
+//movie card
+import React from 'react';
+import Image from 'next/image';
 
-export type MovieType = {
+export type MovieCardProps = {
   id?: number;
   title: string;
-  poster_path: string;
+  poster_path: string | null;
   overview: string;
   vote_average: number;
   release_date?: string;
+  genre_ids?: number[];
 };
 
-export default function MovieComponent(props: MovieType) {
-  const imageUrl = props.poster_path
+//tmdb genre mapping from api
+const TMDB_GENRES: Record<number, string> = {
+  28: 'Action',
+  12: 'Adventure',
+  16: 'Animation',
+  35: 'Comedy',
+  80: 'Crime',
+  99: 'Documentary',
+  18: 'Drama',
+  10751: 'Family',
+  14: 'Fantasy',
+  36: 'History',
+  27: 'Horror',
+  10402: 'Music',
+  9648: 'Mystery',
+  10749: 'Romance',
+  878: 'Sci-Fi',
+  10770: 'TV Movie',
+  53: 'Thriller',
+  10752: 'War',
+  37: 'Western',
+};
+
+export default function MovieComponent(props: MovieCardProps) {
+  //poster image url
+  const posterUrl = props.poster_path
     ? `https://image.tmdb.org/t/p/w500${props.poster_path}`
-    : "https://via.placeholder.com/500x750?text=No+Poster";
+    : 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=500&auto=format&fit=crop&q=80';
+
+  //extract release year
+  const releaseYear = props.release_date ? props.release_date.split('-')[0] : 'N/A';
+
+  //extract primary genre from tmdb api
+  const primaryGenre = props.genre_ids && props.genre_ids.length > 0 && TMDB_GENRES[props.genre_ids[0]]
+    ? TMDB_GENRES[props.genre_ids[0]]
+    : null;
 
   return (
-    <div className="bg-slate-900 rounded-2xl overflow-hidden shadow-lg border border-slate-800 hover:border-indigo-500/50 hover:shadow-2xl transition-all duration-300 flex flex-col justify-between h-full group-hover:-translate-y-1">
-      <div className="relative w-full h-80 bg-slate-950 overflow-hidden">
+    <div className="group relative bg-[#181818] rounded-lg overflow-hidden border border-neutral-800 hover:border-[#E50914] transition-all duration-300 hover:shadow-2xl hover:shadow-red-950/40 hover:-translate-y-1.5 flex flex-col h-full">
+      {/* poster image */}
+      <div className="relative w-full aspect-[2/3] bg-neutral-900 overflow-hidden">
         <Image
-          fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-          className="object-cover group-hover:scale-105 transition-transform duration-500"
-          src={imageUrl}
+          src={posterUrl}
           alt={props.title}
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+          className="object-cover group-hover:scale-105 transition-transform duration-300"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-80" />
-        
-        <span className="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-md text-amber-400 text-xs font-extrabold px-2.5 py-1 rounded-full border border-amber-500/30 flex items-center gap-1">
-          <svg className="w-3 h-3 fill-amber-400" viewBox="0 0 24 24">
-            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-          </svg>
-          {props.vote_average ? props.vote_average.toFixed(1) : "N/A"}
-        </span>
+        <div className="absolute inset-0 bg-gradient-to-t from-[#181818] via-transparent to-transparent opacity-80" />
+
+        {/* hd quality badge */}
+        <div className="absolute top-2.5 right-2.5 bg-black/80 backdrop-blur-md text-[#E50914] text-[10px] font-black px-2 py-0.5 rounded border border-[#E50914]/40 tracking-wider">
+          HD
+        </div>
+
+        {/* year & genre badge */}
+        <div className="absolute top-2.5 left-2.5 bg-black/80 backdrop-blur-md text-gray-300 text-xs font-semibold px-2 py-1 rounded border border-neutral-700 flex items-center gap-1.5">
+          <span>{releaseYear}</span>
+          {primaryGenre && (
+            <>
+              <span className="text-neutral-600">&bull;</span>
+              <span className="text-[#E50914] text-[11px] font-medium">{primaryGenre}</span>
+            </>
+          )}
+        </div>
       </div>
 
-      <div className="p-5 flex flex-col flex-1 justify-between text-slate-100">
+      {/* card info */}
+      <div className="p-4 flex flex-col flex-1 justify-between">
         <div>
-          <h3 className="text-lg font-bold text-white group-hover:text-indigo-400 transition-colors line-clamp-1">
+          <h3 className="font-bold text-white text-base group-hover:text-[#E50914] transition-colors line-clamp-1">
             {props.title}
           </h3>
-          <p className="text-xs text-slate-400 mt-1">
-            Release: {props.release_date || "Unknown"}
-          </p>
-          <p className="text-slate-300 text-xs mt-3 line-clamp-3 leading-relaxed">
-            {props.overview || "No description available."}
+
+          <p className="text-gray-400 text-xs mt-2 line-clamp-2 leading-relaxed">
+            {props.overview || 'No storyline summary available.'}
           </p>
         </div>
 
-        <div className="mt-5 pt-3 border-t border-slate-800/80 flex items-center justify-between">
-          <span className="text-xs font-medium text-slate-400">
-            Click to Book
-          </span>
-          <span className="bg-indigo-600 group-hover:bg-indigo-500 text-white text-xs font-bold px-3 py-1.5 rounded-lg transition duration-200">
-            View & Book →
+        {/* card footer */}
+        <div className="mt-4 pt-3 border-t border-neutral-800 flex items-center justify-between text-xs">
+          <div className="flex items-center gap-1 text-amber-400 font-bold">
+            <span>★</span>
+            <span>{props.vote_average ? props.vote_average.toFixed(1) : 'N/A'}</span>
+            <span className="text-gray-500 font-normal text-[10px]">/ 10</span>
+          </div>
+          <span className="inline-flex items-center gap-1 bg-[#E50914] group-hover:bg-[#b81d24] text-white font-semibold px-3 py-1.5 rounded transition-colors">
+            <svg className="w-3 h-3 fill-current" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+            Details
           </span>
         </div>
       </div>

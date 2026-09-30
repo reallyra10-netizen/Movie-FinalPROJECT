@@ -33,23 +33,29 @@ export const metadata: Metadata = {
   },
 };
 
+const hasClerkKey = Boolean(process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY);
+
 //root layout
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <ClerkProvider>
-      <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased dark`}>
-        <body className="min-h-screen flex flex-col bg-[#141414] text-white">
-          <NavbarComponents />
-          <main className="flex-1">
-            {children}
-          </main>
-          <FooterComponents />
-        </body>
-      </html>
-    </ClerkProvider>
+  const content = (
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased dark`}>
+      <body className="min-h-screen flex flex-col bg-[#141414] text-white">
+        <NavbarComponents />
+        <main className="flex-1">
+          {children}
+        </main>
+        <FooterComponents />
+      </body>
+    </html>
   );
+
+  if (hasClerkKey) {
+    return <ClerkProvider>{content}</ClerkProvider>;
+  }
+
+  return content;
 }

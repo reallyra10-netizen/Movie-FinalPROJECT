@@ -4,6 +4,12 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import {
+  SignInButton,
+  SignUpButton,
+  Show,
+  UserButton,
+} from '@clerk/nextjs';
 
 export default function NavbarComponents() {
   const [search, setSearch] = useState('');
@@ -74,15 +80,15 @@ export default function NavbarComponents() {
             </nav>
           </div>
 
-          {/* search bar */}
-          <div className="hidden sm:flex items-center gap-4">
+          {/* search bar and clerk auth */}
+          <div className="hidden sm:flex items-center gap-3">
             <form onSubmit={handleSearch} className="relative">
               <input
                 type="text"
                 placeholder="Search movies..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="w-48 lg:w-64 bg-neutral-900 border border-neutral-700 rounded-full py-1.5 pl-4 pr-10 text-xs sm:text-sm text-white placeholder-gray-400 focus:outline-none focus:border-[#E50914] transition-all"
+                className="w-40 lg:w-56 bg-neutral-900 border border-neutral-700 rounded-full py-1.5 pl-4 pr-10 text-xs sm:text-sm text-white placeholder-gray-400 focus:outline-none focus:border-[#E50914] transition-all"
               />
               <button
                 type="submit"
@@ -95,16 +101,32 @@ export default function NavbarComponents() {
               </button>
             </form>
 
-            <Link
-              href="/movies"
-              className="bg-[#E50914] hover:bg-[#b81d24] text-white text-xs sm:text-sm font-semibold px-4 py-2 rounded-md transition-colors shadow-md"
-            >
-              Explore Now
-            </Link>
+            {/* clerk authentication */}
+            <Show when="signed-out">
+              <SignInButton mode="modal">
+                <button className="text-gray-300 hover:text-white text-xs sm:text-sm font-semibold px-3 py-1.5 rounded transition-colors">
+                  Sign In
+                </button>
+              </SignInButton>
+              <SignUpButton mode="modal">
+                <button className="bg-[#E50914] hover:bg-[#b81d24] text-white text-xs sm:text-sm font-semibold px-3.5 py-1.5 rounded-md transition-colors shadow">
+                  Sign Up
+                </button>
+              </SignUpButton>
+            </Show>
+
+            <Show when="signed-in">
+              <div className="flex items-center gap-3 pl-2">
+                <UserButton />
+              </div>
+            </Show>
           </div>
 
           {/* mobile menu button */}
           <div className="flex sm:hidden items-center gap-2">
+            <Show when="signed-in">
+              <UserButton />
+            </Show>
             <button
               onClick={() => setMenuOpen(!menuOpen)}
               className="text-gray-300 hover:text-white p-2 rounded-md focus:outline-none"
@@ -177,6 +199,22 @@ export default function NavbarComponents() {
               >
                 About
               </Link>
+
+              {/* mobile clerk auth */}
+              <Show when="signed-out">
+                <div className="pt-2 flex flex-col gap-2">
+                  <SignInButton mode="modal">
+                    <button className="w-full text-center bg-neutral-800 hover:bg-neutral-700 text-white font-medium py-2 rounded">
+                      Sign In
+                    </button>
+                  </SignInButton>
+                  <SignUpButton mode="modal">
+                    <button className="w-full text-center bg-[#E50914] hover:bg-[#b81d24] text-white font-semibold py-2 rounded">
+                      Sign Up with Google
+                    </button>
+                  </SignUpButton>
+                </div>
+              </Show>
             </div>
           </div>
         )}
